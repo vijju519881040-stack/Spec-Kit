@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+            padding: 20px;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .group-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .group-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .group-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #337ab7;
+        }
+
+            .group-header:hover {
+                background: #f8fafc;
+            }
+
+            .group-header i {
+                margin-right: 10px;
+                color: #F16F27;
+            }
+
+            .group-header .arrow {
+                margin-left: auto;
+                transition: 0.2s;
+            }
+
+            .group-header.active .arrow {
+                transform: rotate(180deg);
+            }
+
+        .resort-list {
+            display: none;
+            padding: 10px 20px 20px 40px;
+            background: #fafafa;
+        }
+
+        .resort-item {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .resort-item i {
+                color: #10b981;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-title">Groups & Resorts</div>
+
+    <div class="group-container">
+
+        <!-- Group 1 -->
+        <div class="group-card">
+
+            <div class="group-header" onclick="toggleGroup(this)">
+                <i class="fa-solid fa-layer-group"></i>
+                Ocean Paradise Group
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+
+            <div class="resort-list">
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Ocean Breeze Resort</div>
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Coral Bay Resort</div>
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Blue Lagoon Resort</div>
+            </div>
+
+        </div>
+
+        <!-- Group 2 -->
+        <div class="group-card">
+
+            <div class="group-header" onclick="toggleGroup(this)">
+                <i class="fa-solid fa-layer-group"></i>
+                Mountain Escape Group
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+
+            <div class="resort-list">
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Alpine Heights Resort</div>
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Snow Valley Resort</div>
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Hilltop Paradise Resort</div>
+            </div>
+
+        </div>
+
+        <!-- Group 3 -->
+        <div class="group-card">
+
+            <div class="group-header" onclick="toggleGroup(this)">
+                <i class="fa-solid fa-layer-group"></i>
+                Island Luxury Group
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+
+            <div class="resort-list">
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Palm Beach Resort</div>
+                <div class="resort-item"><i class="fa-solid fa-hotel"></i> Sunset Island Resort</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function toggleGroup(el) {
+            let resorts = el.nextElementSibling;
+
+            if (resorts.style.display === "block") {
+                resorts.style.display = "none";
+                el.classList.remove("active");
+            }
+            else {
+                resorts.style.display = "block";
+                el.classList.add("active");
+            }
+        }
+
+    </script>
+
+</body>
+</html>

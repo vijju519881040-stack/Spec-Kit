@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Top Bar -->
+    <header class="mobile-top-bar">
+        <div class="logo">
+            <i class="fa-solid fa-user-shield" style="background:#F16F27; color:#fff; border-radius:50%; width:24px; height:24px; display:flex; align-items:center; justify-content:center; font-size:14px;"></i>
+            <span style="color:white">Admin</span>
+        </div>
+        <button class="hamburger-btn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-user-shield" style="background:#F16F27; color:#fff; border-radius:50%; width:24px; height:24px; display:flex; align-items:center; justify-content:center; font-size:14px;"></i>
+                    <span style="color:white">Admin</span>
+                </div>
+                <button class="mobile-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+            <div class="sidebar-menu">
+                <a href="default.html" target="content-frame" class="menu-item" onclick="setActive(this)">
+                    <i class="fa-solid fa-house" style="color: #F16F27;"></i>
+                    <span>Home</span>
+                </a>
+                <div class="menu-item dropdown" onclick="toggleDropdown(this)">
+                    <i class="fa-solid fa-hotel" style="color: #F16F27;"></i>
+                    <span>Groups</span>
+                    <i class="fa-solid fa-chevron-down ms-auto"></i>
+                </div>
+
+                <div class="submenu">
+                    <a href="CreateGroup.html" target="content-frame" onclick="setActive(this)">Create Group</a>
+                    <a href="Groups.html" target="content-frame" onclick="setActive(this)">View Groups</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <iframe name="content-frame" id="content-frame" src="default.html" title="Main Content" frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('open');
+        }
+
+        function setActive(element) {
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            // Close sidebar on mobile after clicking
+            if (window.innerWidth <= 768) {
+                toggleSidebar();
+            }
+        }
+
+        function toggleDropdown(el) {
+            let submenu = el.nextElementSibling;
+            el.classList.toggle('open');
+
+            if (submenu.style.display === "block") {
+                submenu.style.display = "none";
+            } else {
+                submenu.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
